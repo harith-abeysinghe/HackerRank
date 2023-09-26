@@ -8,7 +8,7 @@ def absolutePermutation(n, k):
     for j in range(n+1):
         pos.append(j)
     if k == 0:
-        return pos
+        return pos[1:]
 
     if (n % 2) or (n%k)==1:
         return [-1]
@@ -17,7 +17,8 @@ def absolutePermutation(n, k):
     for i in range(1, n - k + 1):
         if pos[i] == pos[i+k] - k:
             pos[i],pos[i+k] = pos[k+i],pos[i]
-
+        elif abs(i - pos[i]) != k:
+            return [-1]
     return pos[1:]
     # print(permutations)
 
@@ -46,4 +47,4 @@ def absolutePermutation(n, k):
 
 
 
-print(absolutePermutation(4,2))
+print(absolutePermutation(10,0))
